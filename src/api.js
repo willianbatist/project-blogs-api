@@ -10,6 +10,8 @@ const app = express();
 app.use(express.json());
 
 app.post('/login', validationLogin.validationLogin, User.login);
+
+app.post('/user', User.create);
 // ...
 
 // É importante exportar a constante `app`,
