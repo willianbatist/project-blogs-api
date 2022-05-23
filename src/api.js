@@ -20,6 +20,8 @@ app.post('/user',
     validateJWT);
 
 app.get('/user', validateJWT, User.allUsers);
+
+app.get('/user/:id', validateJWT, User.userId);
 // ...
 
 // É importante exportar a constante `app`,
