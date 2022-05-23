@@ -6,6 +6,12 @@ const login = async (req, res) => {
   return res.status(200).json({ token });
 };
 
+const create = async (req, res) => {
+  const token = await User.create(req.body);
+  return res.status(201).json({ token });
+};
+
 module.exports = {
   login,
+  create,
 };
