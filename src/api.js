@@ -18,6 +18,8 @@ app.post('/user',
     validationUser.checkEmail,
     User.create,
     validateJWT);
+
+app.get('/user', validateJWT, User.allUsers);
 // ...
 
 // É importante exportar a constante `app`,
