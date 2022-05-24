@@ -3,8 +3,10 @@ const express = require('express');
 const validationLogin = require('./middleware/validationLogin');
 const validationUser = require('./middleware/validationUser');
 const validateJWT = require('./middleware/validateJWT');
+const validationCategory = require('./middleware/validationCategory');
 
 const User = require('./database/controllers/user');
+const Category = require('./database/controllers/category');
 // ...
 
 const app = express();
@@ -22,6 +24,8 @@ app.post('/user',
 app.get('/user', validateJWT, User.allUsers);
 
 app.get('/user/:id', validateJWT, User.userId);
+
+app.post('/categories', validateJWT, validationCategory.checkName, Category.create);
 // ...
 
 // É importante exportar a constante `app`,
