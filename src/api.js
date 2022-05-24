@@ -4,9 +4,11 @@ const validationLogin = require('./middleware/validationLogin');
 const validationUser = require('./middleware/validationUser');
 const validateJWT = require('./middleware/validateJWT');
 const validationCategory = require('./middleware/validationCategory');
+const validationPost = require('./middleware/validationPost');
 
 const User = require('./database/controllers/user');
 const Category = require('./database/controllers/category');
+const Post = require('./database/controllers/post');
 // ...
 
 const app = express();
@@ -28,6 +30,8 @@ app.get('/user/:id', validateJWT, User.userId);
 app.post('/categories', validateJWT, validationCategory.checkName, Category.create);
 
 app.get('/categories', validateJWT, Category.find);
+
+app.post('/post', validateJWT, validationPost.checkPost, Post.create);
 // ...
 
 // É importante exportar a constante `app`,
