@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     userId: {
       type: DataTypes.INTEGER,
+      foreignKey: true,
       allowNull: false,
     },
     published: {
@@ -25,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     updatedAt: 'updated',
-    createdAt: 'published'
+    createdAt: 'published',
   });
 
   BlogPost.associate = (models) => {
