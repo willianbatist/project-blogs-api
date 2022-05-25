@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define("User", {
+  const User = sequelize.define('User', {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     }
   }, {
-    timestamps: false
+    timestamps: false,
   });
 
   User.associate = (models) => {
