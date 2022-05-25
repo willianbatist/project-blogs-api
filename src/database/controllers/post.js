@@ -33,8 +33,20 @@ const create = async (req, res) => {
     }
   };
 
+  const postUpdate = async (req, res) => {
+    try {
+      const { id } = req.params;
+      await Post.postUpdate(req.body, id);
+      const find = await Post.postId(id);
+      return res.status(200).json(find);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  };
+
   module.exports = {
     create,
     postAll,
     postId,
+    postUpdate,
   };
