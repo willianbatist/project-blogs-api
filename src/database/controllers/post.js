@@ -18,7 +18,23 @@ const create = async (req, res) => {
     }
   };
 
+  const postId = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const find = await Post.postId(id);
+
+      if (!find) {
+        return res.status(404).json({ message: 'Post does not exist' });
+      }
+
+      return res.status(200).json(find);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  };
+
   module.exports = {
     create,
     postAll,
+    postId,
   };
