@@ -34,6 +34,8 @@ app.get('/categories', validateJWT, Category.find);
 app.post('/post', validateJWT, validationPost.checkPost, Post.create);
 
 app.get('/post', validateJWT, Post.postAll);
+
+app.get('/post/:id', validateJWT, Post.postId);
 // ...
 
 // É importante exportar a constante `app`,
