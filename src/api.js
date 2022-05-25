@@ -36,6 +36,9 @@ app.post('/post', validateJWT, validationPost.checkPost, Post.create);
 app.get('/post', validateJWT, Post.postAll);
 
 app.get('/post/:id', validateJWT, Post.postId);
+
+app.put('/post/:id', validateJWT, 
+validationPost.verifyEditPost, validationPost.verifyPost, Post.postUpdate);
 // ...
 
 // É importante exportar a constante `app`,
