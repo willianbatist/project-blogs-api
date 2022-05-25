@@ -9,6 +9,16 @@ const create = async (req, res) => {
     }
   };
   
+  const postAll = async (_req, res) => {
+    try {
+      const find = await Post.postAll();
+      return res.status(200).json(find);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  };
+
   module.exports = {
     create,
+    postAll,
   };
